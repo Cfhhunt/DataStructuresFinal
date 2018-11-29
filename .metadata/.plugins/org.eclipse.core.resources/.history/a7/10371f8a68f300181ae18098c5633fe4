@@ -1,0 +1,32 @@
+package for_ds_final_colin_tim;
+
+//List of all the different contacts
+public class ContactList {
+
+	private int size = 0;
+	
+	public Contact findByName() {
+		return null;
+	}
+	
+	public Contact findByNumber() {
+		return null;
+	}
+	
+	public boolean delete() {
+		return true;
+	}
+	
+	public boolean insert() {
+		return true;
+	}
+
+	public int size() {
+		return size;
+	}
+	
+	public void printAllContacts() {
+		//Print all contacts to console. In what order?
+	}
+	
+}
