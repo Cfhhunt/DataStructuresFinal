@@ -8,8 +8,6 @@ public class ContactList {
 	static HashMap<String, Contact> contactListByName = new HashMap<>();
 	static HashMap<String, Contact> contactListByNumber = new HashMap<>();	
 	
-	//add another implementation of the contactlist with the custom separateChain class
-	
 	public ContactList() {
 		
 	}//No parameter contructor
