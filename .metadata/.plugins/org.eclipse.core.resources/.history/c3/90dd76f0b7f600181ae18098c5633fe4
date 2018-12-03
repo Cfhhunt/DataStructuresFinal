@@ -1,0 +1,24 @@
+package for_ds_final_colin_tim;
+
+import java.util.*;
+
+public class SeparateChainingHashTable {
+	
+	SeparateChainingHashTable() {
+		
+	}
+
+	private static class Node {
+		
+		
+		Node() {
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

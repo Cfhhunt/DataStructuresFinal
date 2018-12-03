@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;for_ds_final_colin_tim.separateChain.java&apos; to &apos;SeparateChainingHashTable.java&apos;&#x0D;&#x0A;- Original project: &apos;DataStructures_Final_Colin_Tim&apos;&#x0D;&#x0A;- Original element: &apos;for_ds_final_colin_tim.separateChain.java&apos;&#x0D;&#x0A;- Renamed element: &apos;for_ds_final_colin_tim.SeparateChainingHashTable.java&apos;" description="Rename compilation unit &apos;separateChain.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/&lt;for_ds_final_colin_tim{separateChain.java" name="SeparateChainingHashTable.java" references="false" stamp="1543810758913" version="1.0"/>
+</session>

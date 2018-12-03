@@ -12,7 +12,7 @@ public class ContactList {
 	
 	public ContactList() {
 		
-	}//No parameter contructor
+	}//0 parameter contructor
 	
 	private int size = 0;//Size of the entire contact list
 	

@@ -1,0 +1,95 @@
+package for_ds_final_colin_tim;
+
+import java.util.*;
+
+public class SeparateChainingHashTable {
+	
+	private static final int DEFAULT_TABLE_SIZE = 101;
+	private List<Contact> [] theLists;
+	private int currentSize;
+	
+	SeparateChainingHashTable() {
+		theLists = new LinkedList[DEFAULT_TABLE_SIZE];
+		for(int i = 0; i < theLists.length; i++) {
+			theLists[i] = new LinkedList<>();	
+		}
+	}
+	
+	SeparateChainingHashTable(int theSize) {
+		theLists = new LinkedList[nextPrime(theSize)];
+		for(int i = 0; i < theLists.length; i++) {
+			theLists[i] = new LinkedList<>();
+		}
+	}
+	
+	private void rehash() {
+		
+	}
+	
+	private int myNameHash(Contact x) {
+		int hashVal = x.getName().hashCode();
+		
+		hashVal %= theLists.length;
+		if (hashVal == 0) {
+			hashVal += theLists.length;
+		}
+		
+		return hashVal;
+	}
+	
+	private int myNumberHash(Contact x) {
+		int hashVal = x.getNumber().hashCode();
+		
+		hashVal %= theLists.length;
+		if (hashVal == 0) {
+			hashVal += theLists.length;
+		}
+		
+		return hashVal;
+	}
+
+	private static int nextPrime(int n) {
+		return 0;
+	}
+	
+	private static boolean isPrime(int n) {
+		return false;
+	}
+	
+	public boolean insert(String theName, String theNumber) {
+		Contact newContact = new Contact(theName, theNumber);
+		List<Contact> nameList = theLists[myNameHash(newContact)];
+		List<Contact> numberList = theLists[myNumberHash(newContact)];
+		if (!nameList.contains(newContact) && !numberList.contains(newContact)) {
+			nameList.add(newContact);
+			numberList.add(newContact);
+			currentSize+=2;
+			if(currentSize > theLists.length) {
+				rehash();
+			}
+		} else {return false;}
+		return true;
+	}
+	
+	public String find(String nameOrNumber) {
+		return "";
+	}
+	
+	public boolean delete(String nameOrNumber) {
+		return false;
+	}
+	
+	public int size() {
+		return 0;
+	}
+	
+	public void printAllContacts() {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
