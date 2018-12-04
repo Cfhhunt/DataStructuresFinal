@@ -6,64 +6,44 @@ import java.util.*;
 //List of all the different contacts
 public class ContactList {
 
-	static HashMap<String, Contact> contactListByName = new HashMap<>();
-	static HashMap<String, Contact> contactListByNumber = new HashMap<>();	
-	
+	static HashMap<String, Contact> contactListByName;
+	static HashMap<String, Contact> contactListByNumber;	
+
 	//add another implementation of the contactlist with the custom separateChain class
-	
+
 	public ContactList() {
-		
+		contactListByName = new HashMap<>();
+		contactListByNumber = new HashMap<>();
 	}//0 parameter contructor
-	
+
 	private int size = 0;//Size of the entire contact list
-	
+
 	public Contact findByName(String theName) { //Should have runtime of Theta(1)
 		Contact contact = contactListByName.get(theName);
 		return contact;
 	}
-	
+
 	public Contact findByNumber(String theNumber) {//Should have runtime of Theta(1)
 		Contact namefind = contactListByNumber.get(theNumber);
 		return namefind;
 	}
-	
+
 	public boolean deleteByNumber(String theNumber) {
-			
 		Contact contact = contactListByNumber.get(theNumber);
+		if (contact==null) return false;
 		contactListByNumber.remove(theNumber);
 		contactListByName.remove(contact.getName());
-		
-		
-		
-		
-		if (contactListByNumber(theNumber.hashCode()) == null)
-			return false;
-
-		contactListByNumber.remove(theNumber);		
-
-		contactListNyName.remove(findByName(theName));
-
-		if (contactListByNumber(theNumber == null)
-			return false;
-		
 		return true;
 	}
 
 	public boolean deleteByName(String theName) {
-                
-		
-		if (contactListByName(theName) == null)
-			return false;
-		contactListByName.remove(theName);
-               
-		contactListByNumber.remove(findByNumber(theNumber));
+		Contact contact = contactListByNumber.get(theName);
+		if (contact==null) return false;
+		contactListByNumber.remove(theName);
+		contactListByName.remove(contact.getNumber());
+		return true;
+	}
 
-		if (contactListByName(TheName == null))
-                	return false; 
-
-                return true;
-
-	
 	public boolean insert(String theName, String theNumber) {//As of right now this doesn't check if the insert is succesful
 		Contact toInsert = new Contact(theName, theNumber);
 		contactListByName.put(toInsert.getName(), toInsert);
@@ -74,35 +54,24 @@ public class ContactList {
 	public int size() {
 		return size;
 	}
-	
+
 	public void printAllContacts() {
-		//Print all contacts to console. In what order?
-
+		for (Object contact : contactListByName.values()) {
+			System.out.println(contact);
+		}
 	}
-	
-	public static void print(Map<String, Integer> contactListByNumber)  
-   	 { 
-        if (contactListByNumber.isEmpty())  
-        { 
-            System.out.println("contactListByNumber is empty"); 
-        } 
-          
-        else
-        { 
-            System.out.println(contactListByNumber); 
-        } 
-   	 } 
-
-}
-
 
 	public static void main(String[] args) {
-		//We won't need this main method later, I'm just putting it in for fast testing
 		ContactList ourList = new ContactList();
 		ourList.insert("Captain Falcon", "1234567890");
 		ourList.insert("Gary", "0987654321");
-		
-		System.out.println(" " + ourList.contactListByName.get("Gary").getNumber());
+
+		System.out.println(" " + ourList.contactListByName.get("Gary"));
 		System.out.println(" " + ourList.contactListByName.get("Jon"));
+		System.out.println(" " + ourList.contactListByNumber.get("0987654321"));
+		
+		System.out.println("" + ourList.deleteByName("Gary"));
+		ourList.deleteByNumber("" + ourList.deleteByNumber("1234567890"));
+		System.out.println("" + ourList.deleteByName("Gary"));
 	}
 }

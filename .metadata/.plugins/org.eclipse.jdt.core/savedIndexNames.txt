@@ -4,7 +4,6 @@ INDEX VERSION 1.130+C:\Users\cfhhu\Desktop\DS_Final\.metadata\.plugins\org.eclip
 1580166048.index
 2916426105.index
 1329257546.index
-1182791696.index
 3698838649.index
 3599506362.index
 4232500288.index
@@ -26,7 +25,6 @@ INDEX VERSION 1.130+C:\Users\cfhhu\Desktop\DS_Final\.metadata\.plugins\org.eclip
 1230538165.index
 2674727280.index
 2589955883.index
-2467352255.index
 347954427.index
 2692035760.index
 1860642593.index
