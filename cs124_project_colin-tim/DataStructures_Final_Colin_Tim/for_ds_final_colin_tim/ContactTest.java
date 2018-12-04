@@ -16,10 +16,18 @@ public void setUp() throws Exception {
 contactListTest = new ContactList();
 contactListTest.insert("User 1", "123-456-7890");
 contactListTest.insert("User 2", "123-456-7891");
+contactListTest.insert("Alice", "1154059534");
+contactListTest.insert("Betty", "2154059534");
+contactListTest.insert("Clara", "3154059534");
+contactListTest.insert("Diann", "4154059534");
+
+
 }
 @Test
 public void testFindByName () {
 Contact contactTest = contactListTest.findByName("User 1");
+Contact contactTest = contactListTest.findByName("Alice");
+Contact contactTest = contactListTest.findByName("Nonexistent person");
 assertNotNull(contactTest);
 assertEquals("User 1", contactTest.getName());
 assertEquals("1234567890", contactTest.getNumber());
