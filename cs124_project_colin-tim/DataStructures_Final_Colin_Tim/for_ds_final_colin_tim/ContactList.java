@@ -17,17 +17,45 @@ public class ContactList {
 	
 	private int size = 0;//Size of the entire contact list
 	
-	public Contact findByName() {//Should have runtime of Theta(1)
-		return null;
+	public Contact findByName(theName) { //Should have runtime of Theta(1)
+		String phonenum = contactListByName.get(theName);
+		return phonenum;
 	}
 	
-	public Contact findByNumber() {//Should have runtime of Theta(1)
-		return null;
+	public Contact findByNumber(theNumber) {//Should have runtime of Theta(1)
+		String namefind = contactListByNumber.get(theNumber);
+		return namefind;
 	}
 	
-	public boolean delete() {
+	public boolean deleteByNumber(theNumber) {
+			
+		if (contactListByNumber(TheNumber) == null)
+			return false;
+
+		contactListByNumber.remove(theNumber);		
+
+		contactListNyName.remove(findByName(theName));
+
+		if (contactListByNumber(TheNumber == null)
+			return false;
+		
 		return true;
 	}
+
+	public boolean deleteByName(theName) {
+                
+		
+		if (contactListByName(theName) == null)
+			return false;
+		contactListByName.remove(theName);
+               
+		contactListByNumber.remove(findByNumber(theNumber));
+
+		if (contactListByName(TheName == null))
+                	return false; 
+
+                return true;
+
 	
 	public boolean insert(String theName, String theNumber) {//As of right now this doesn't check if the insert is succesful
 		Contact toInsert = new Contact(theName, theNumber);
@@ -42,8 +70,25 @@ public class ContactList {
 	
 	public void printAllContacts() {
 		//Print all contacts to console. In what order?
+
 	}
 	
+	public static void print(Map<String, Integer> contactListByNumber)  
+   	 { 
+        if (contactListByNumber.isEmpty())  
+        { 
+            System.out.println("contactListByNumber is empty"); 
+        } 
+          
+        else
+        { 
+            System.out.println(contactListByNumber); 
+        } 
+   	 } 
+
+}
+
+
 	public static void main(String[] args) {
 		//We won't need this main method later, I'm just putting it in for fast testing
 		ContactList ourList = new ContactList();
