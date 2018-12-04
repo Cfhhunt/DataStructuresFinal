@@ -51,6 +51,5 @@ public class ContactList {
 		
 		System.out.println(" " + ourList.contactListByName.get("Gary").getNumber());
 		System.out.println(" " + ourList.contactListByName.get("Jon"));
-		
 	}
 }

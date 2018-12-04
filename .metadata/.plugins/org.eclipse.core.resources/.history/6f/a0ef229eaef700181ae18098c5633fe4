@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SeparateChainingHashTable<AnyType> {
 
-	private static final int DEFAULT_TABLE_SIZE = 101;
+	private static final int DEFAULT_TABLE_SIZE = 3;
 	private List<Contact> [] theLists;//The Hash list
 	private int currentSize;//number of Contacts in the table
 
@@ -31,7 +31,7 @@ public class SeparateChainingHashTable<AnyType> {
 	public boolean insert(String theName, String theNumber) {		
 		return insert(new Contact(theName, theNumber));
 	}//insert name and number
-
+	
 	public boolean insert(String theName, String theNumber, String theAddress, String theEmail) {		
 		return insert(new Contact(theName, theNumber, theAddress, theEmail));
 	}//insert name, number, address, email
@@ -48,7 +48,7 @@ public class SeparateChainingHashTable<AnyType> {
 		} else {return false;}
 		return true;
 	}//delete
-
+	
 	public boolean edit(String toDelete, Contact toAdd) {
 		if (delete(toDelete) && insert(toAdd)) return true;
 		return false;
@@ -82,6 +82,8 @@ public class SeparateChainingHashTable<AnyType> {
 				insert(contact);
 			}
 		}
+		
+		System.out.println("size is now " + theLists.length);
 	}//rehash
 
 	private int myHash(String x) {//Gets the hash value of the name or number
@@ -93,23 +95,23 @@ public class SeparateChainingHashTable<AnyType> {
 
 		return hashVal;
 	}//myHash
-
+	
 	public int nextPrime(int n){//Finds the next prime number
-		int counter;
-		n++;   
-		while(true){
-			counter = 0;
-			for(int i = 2; i <= Math.sqrt(n); i ++){
-				if(n % i == 0)  counter++;
-			}
-			if(counter == 0)
-				return n;
-			else{
-				n++;
-				continue;
-			}
-		}
-	}//nextPrime
+		  int counter;
+		  n++;   
+		  while(true){
+		    counter = 0;
+		    for(int i = 2; i <= Math.sqrt(n); i ++){
+		      if(n % i == 0)  counter++;
+		    }
+		    if(counter == 0)
+		      return n;
+		    else{
+		      n++;
+		      continue;
+		    }
+		  }
+		}//nextPrime
 
 	private static boolean isPrime(int n) {//Returns true or false if n is prime
 		if (n == 2) 
@@ -127,9 +129,7 @@ public class SeparateChainingHashTable<AnyType> {
 		Contact[] array = new Contact[currentSize];
 		for(List<Contact> list : theLists) {
 			for (Contact contact : list) { 
-				if (theLists[myHash(contact.getName())] == list) {
-					toReturn += "Name: " + contact.getName() + ", Number: " + contact.getNumber() + "\n";
-				}
+				toReturn += "Name: " + contact.getName() + ", Number: " + contact.getNumber() + "\n";
 			}
 		}
 		return toReturn;

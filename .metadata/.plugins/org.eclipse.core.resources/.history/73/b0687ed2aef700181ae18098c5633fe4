@@ -82,6 +82,8 @@ public class SeparateChainingHashTable<AnyType> {
 				insert(contact);
 			}
 		}
+
+		System.out.println("size is now " + theLists.length);
 	}//rehash
 
 	private int myHash(String x) {//Gets the hash value of the name or number

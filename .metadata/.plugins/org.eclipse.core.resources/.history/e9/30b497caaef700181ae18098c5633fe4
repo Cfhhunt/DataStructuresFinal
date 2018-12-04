@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SeparateChainingHashTable<AnyType> {
 
-	private static final int DEFAULT_TABLE_SIZE = 101;
+	private static final int DEFAULT_TABLE_SIZE = 3;
 	private List<Contact> [] theLists;//The Hash list
 	private int currentSize;//number of Contacts in the table
 
@@ -82,6 +82,8 @@ public class SeparateChainingHashTable<AnyType> {
 				insert(contact);
 			}
 		}
+
+		System.out.println("size is now " + theLists.length);
 	}//rehash
 
 	private int myHash(String x) {//Gets the hash value of the name or number
@@ -127,7 +129,7 @@ public class SeparateChainingHashTable<AnyType> {
 		Contact[] array = new Contact[currentSize];
 		for(List<Contact> list : theLists) {
 			for (Contact contact : list) { 
-				if (theLists[myHash(contact.getName())] == list) {
+				if (theLists[myHash(contact.getName())].equals(list)) {
 					toReturn += "Name: " + contact.getName() + ", Number: " + contact.getNumber() + "\n";
 				}
 			}
