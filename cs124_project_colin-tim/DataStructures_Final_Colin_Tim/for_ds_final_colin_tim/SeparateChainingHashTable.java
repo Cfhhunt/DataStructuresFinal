@@ -25,7 +25,7 @@ public class SeparateChainingHashTable<AnyType> {
 			theLists[i] = new LinkedList<Contact>();
 		}
 	}//SeparateChainingHashTable
-
+	// The average case is O(1) and worst case is O(N) 
 	public boolean insert(Contact contact) {
 		if(find(contact.getName())!=null || find(contact.getNumber())!=null) return false;
 		List<Contact> nameList = theLists[myHash(contact.getName())];
@@ -38,15 +38,17 @@ public class SeparateChainingHashTable<AnyType> {
 		}
 		return true;
 	}//insert contact
-
+	// The average case is O(1) and worst case is O(N) 
 	public boolean insert(String theName, String theNumber) {		
 		return insert(new Contact(theName, theNumber));
 	}//insert name and number
-
+	// The average case is O(1) and worst case is O(N) 
 	public boolean insert(String theName, String theNumber, String theAddress, String theEmail) {		
 		return insert(new Contact(theName, theNumber, theAddress, theEmail));
 	}//insert name, number, address, email
 
+
+	// The average case is O(1) and worst case is O(N) 
 	public boolean delete(String nameOrNumber) {//TODO:
 		Contact toDelete = find(nameOrNumber);
 		if(toDelete == null) return false;
@@ -63,7 +65,7 @@ public class SeparateChainingHashTable<AnyType> {
 		if (delete(toDelete) && insert(toAdd)) return true;
 		return false;
 	}
-
+	// The average case is O(1) and worst case is O(N) 
 	public Contact find(String nameOrNumber) {
 		List<Contact> nameList = theLists[myHash(nameOrNumber)];
 		List<Contact> numberList = theLists[myHash(nameOrNumber)];
@@ -77,7 +79,7 @@ public class SeparateChainingHashTable<AnyType> {
 		}
 		return null;
 	}//find
-
+	// Runtime O(2n)
 	private void rehash() {//Doubles the size of the list and rehashes all Contacts
 		List<Contact> [] oldLists = theLists;
 

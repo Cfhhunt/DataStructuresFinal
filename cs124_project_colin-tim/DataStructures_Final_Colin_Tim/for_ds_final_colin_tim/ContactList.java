@@ -18,20 +18,20 @@ public class ContactList {
 
 	private int size = 0;//Size of the entire contact list
 
-	// Runtime: Theta(1)
+	// Runtime: Theta(1), unless there is a hash collision, in this case running time becomes 0(n). 
 	public Contact findByName(String theName) {
 		Contact contact = contactListByName.get(theName);
 		return contact;
 	}
 	
 
-	// Runtime: Theta(1)
+	// Runtime: Theta(1), unless there is a hash collision, in this case running time becomes 0(n).
 	public Contact findByNumber(String theNumber) {
 		Contact namefind = contactListByNumber.get(theNumber);
 		return namefind;
 	}
 	
-	// Runtime: Theta(1)
+	// Runtime: Theta(1), unless there is a hash collision, in this case running time becomes 0(n).
 	public boolean deleteByNumber(String theNumber) {
 		Contact contact = contactListByNumber.get(theNumber);
 		if (contact==null) return false;
@@ -40,7 +40,7 @@ public class ContactList {
 		return true;
 	}
 
-	// Runtime: Theta(1)
+	// Runtime: Theta(1), unless there is a hash collision, in this case running time becomes 0(n).
 	public boolean deleteByName(String theName) {
 		Contact contact = contactListByNumber.get(theName);
 		if (contact==null) return false;
@@ -48,7 +48,7 @@ public class ContactList {
 		contactListByName.remove(contact.getNumber());
 		return true;
 	}
-	// Runtime: Theta(1)
+	// Runtime: Theta(1), unless there is a hash collision, in this case running time becomes 0(n).
 	public boolean insert(String theName, String theNumber) {//As of right now this doesn't check if the insert is succesful
 		Contact toInsert = new Contact(theName, theNumber);
 		contactListByName.put(toInsert.getName(), toInsert);
@@ -59,14 +59,14 @@ public class ContactList {
 	public int size() {
 		return size;
 	}
-	// Runtime is Theta(1)
+	// Runtime is Theta(1), unless there is a hash collision, in this case running time becomes 0(n).
 	public void printAllContacts() {
 		for (Object contact : contactListByName.values()) {
 			System.out.println(contact);
 		}
 	}
 	
-	// Runtime is Theta(1)
+	// Runtime: Theta(1)
 	public static void main(String[] args) {
 		ContactList ourList = new ContactList();
 		ourList.insert("Captain Falcon", "1234567890");
