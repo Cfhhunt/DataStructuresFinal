@@ -2,14 +2,6 @@ package for_ds_final_colin_tim;
 
 import java.util.*;
 
-/**
- * This is a custom implementation of the Separate Chaining class
- * 
- * 
- * @author Colin, Tim
- *
- * @param <AnyType>
- */
 public class SeparateChainingHashTable<AnyType> {
 
 	private static final int DEFAULT_TABLE_SIZE = 101;

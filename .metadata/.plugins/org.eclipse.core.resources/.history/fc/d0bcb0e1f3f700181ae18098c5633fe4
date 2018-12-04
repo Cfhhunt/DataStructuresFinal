@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 //This GUI uses the Separate Chaining class to store user inputs in the contact list.
-//The GUI doe
+//The GUI cleans up user input for the SeparateChainingHashTable class
 public class GUI extends JFrame {
 
 	private JTextField searchTF, nameTF, numberTF, emailTF, addressTF;
@@ -14,7 +14,7 @@ public class GUI extends JFrame {
 	private JButton addB, deleteB, searchB, printB, editB;
 	private Container myCP;
 	private Color myColor = new Color(150, 225, 225);
-	private SeparateChainingHashTable myContactList;
+	private SepChain myContactList;
 	private Contact currentContact = null;
 
 	public GUI() {		
@@ -27,7 +27,7 @@ public class GUI extends JFrame {
 		myCP.setBackground(myColor);
 		myCP.setForeground(Color.BLACK);
 
-		myContactList = new SeparateChainingHashTable();
+		myContactList = new SepChain();
 		myContactList.insert("Alan", "1234567890", "Something something, Blechly Park, UK", "alan@turinginstitute.uk");
 
 		// Search Bar
