@@ -1,0 +1,61 @@
+package for_ds_final_colin_tim;
+
+import java.util.*;
+
+// Tim: first review of contactlist written by Colin. Looking good.
+//List of all the different contacts
+public class SeparateChainingContactList {
+
+	static SepChain contactListByName;
+	static SepChain contactListByNumber;	
+
+	//add another implementation of the contactlist with the custom separateChain class
+
+	public SeparateChainingContactList() {
+		contactListByName = new SepChain();
+		contactListByNumber = new SepChain();
+	}//0 parameter contructor
+
+	private int size = 0;//Size of the entire contact list
+
+	public Contact findByName(String theName) { //Should have runtime of Theta(1)
+		Contact contact = contactListByName.find(theName);
+		return contact;
+	}
+
+	public Contact findByNumber(String theNumber) {//Should have runtime of Theta(1)
+		Contact namefind = contactListByNumber.find(theNumber);
+		return namefind;
+	}
+
+	public boolean deleteByNumber(String theNumber) {
+		Contact contact = contactListByNumber.find(theNumber);
+		if (contact==null) return false;
+		contactListByNumber.delete(theNumber);
+		contactListByName.delete(contact.getName());
+		return true;
+	}
+
+	public boolean deleteByName(String theName) {
+		Contact contact = contactListByNumber.get(theName);
+		if (contact==null) return false;
+		contactListByNumber.delete(theName);
+		contactListByName.delete(contact.getNumber());
+		return true;
+	}
+
+	public boolean insert(String theName, String theNumber) {//As of right now this doesn't check if the insert is succesful
+		Contact toInsert = new Contact(theName, theNumber);
+		contactListByName.insert(toInsert.getName(), toInsert);
+		contactListByNumber.insert(toInsert.getNumber(), toInsert);
+		return true;
+	}
+
+	public int size() {
+		return size;
+	}
+
+	public void printAllContacts() {
+		contactListByName.printAllContacts();
+	}
+}

@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 //This GUI uses the Separate Chaining class to store user inputs in the contact list.
-//The GUI does 
+//The GUI doe
 public class GUI extends JFrame {
 
 	private JTextField searchTF, nameTF, numberTF, emailTF, addressTF;

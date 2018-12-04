@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * This is a custom implementation of the Separate Chaining class
- * Run this by using the included GUI
+ * 
  * 
  * @author Colin, Tim
  *
@@ -44,7 +44,7 @@ public class SeparateChainingHashTable<AnyType> {
 		return insert(new Contact(theName, theNumber, theAddress, theEmail));
 	}//insert name, number, address, email
 
-	public boolean delete(String nameOrNumber) {
+	public boolean delete(String nameOrNumber) {//TODO:
 		Contact toDelete = find(nameOrNumber);
 		if(toDelete == null) return false;
 		List<Contact> nameList = theLists[myHash(toDelete.getName())];

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * This is a custom implementation of the Separate Chaining class
- * Run this by using the included GUI
+ * 
  * 
  * @author Colin, Tim
  *

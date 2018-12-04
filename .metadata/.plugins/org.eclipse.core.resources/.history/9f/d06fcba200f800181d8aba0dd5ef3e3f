@@ -4,54 +4,41 @@ import java.util.*;
 
 /**
  * This is a custom implementation of the Separate Chaining class
- * Run this by using the included GUI
+ * 
  * 
  * @author Colin, Tim
  *
  * @param <AnyType>
  */
-public class SeparateChainingHashTable<AnyType> {
+public class SepChain<AnyType> {
 
 	private static final int DEFAULT_TABLE_SIZE = 101;
 	private List<Contact> [] theLists;//The Hash list
 	private int currentSize;//number of Contacts in the table
 
-	SeparateChainingHashTable() {
+	SepChain() {
 		theLists = new LinkedList[DEFAULT_TABLE_SIZE];
 		for(int i = 0; i < DEFAULT_TABLE_SIZE; i++) {
 			theLists[i] = new LinkedList<Contact>();
 		}
 	}//SeparateChainingHashTable
 
-	public boolean insert(Contact contact) {
-		if(find(contact.getName())!=null || find(contact.getNumber())!=null) return false;
-		List<Contact> nameList = theLists[myHash(contact.getName())];
-		List<Contact> numList = theLists[myHash(contact.getNumber())];
-		nameList.add(contact);
-		numList.add(contact);
-		currentSize+=2;
+	public boolean insert(String nameOrNumber, Contact contact) {
+		List<Contact> list = theLists[myHash(nameOrNumber)];
+		list.add(contact);
+		currentSize++;
 		if(currentSize > theLists.length) {
 			rehash();
 		}
 		return true;
 	}//insert contact
 
-	public boolean insert(String theName, String theNumber) {		
-		return insert(new Contact(theName, theNumber));
-	}//insert name and number
-
-	public boolean insert(String theName, String theNumber, String theAddress, String theEmail) {		
-		return insert(new Contact(theName, theNumber, theAddress, theEmail));
-	}//insert name, number, address, email
-
-	public boolean delete(String nameOrNumber) {
+	public boolean delete(String nameOrNumber) {//TODO:
 		Contact toDelete = find(nameOrNumber);
 		if(toDelete == null) return false;
-		List<Contact> nameList = theLists[myHash(toDelete.getName())];
-		List<Contact> numberList = theLists[myHash(toDelete.getNumber())];
-		if(nameList.contains(toDelete) && numberList.contains(toDelete)) {
-			nameList.remove(toDelete);
-			numberList.remove(toDelete);
+		List<Contact> list = theLists[myHash(toDelete.getName())];
+		if(list.contains(toDelete)) {
+			list.remove(toDelete);
 		} else {return false;}
 		return true;
 	}//delete
@@ -128,15 +115,16 @@ public class SeparateChainingHashTable<AnyType> {
 				return false;
 		return true;
 	}//isPrime
+	
+	public int getSize() {
+		return currentSize;
+	}
 
 	public String printAllContacts() {//Prints every contact
 		String toReturn = "Contacts\n";
-		Contact[] array = new Contact[currentSize];
 		for(List<Contact> list : theLists) {
 			for (Contact contact : list) { 
-				if (theLists[myHash(contact.getName())] == list) {
-					toReturn += "Name: " + contact.getName() + ", Number: " + contact.getNumber() + "\n";
-				}
+				toReturn = toReturn + "\n" + contact;
 			}
 		}
 		return toReturn;
