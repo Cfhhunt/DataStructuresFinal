@@ -2,6 +2,7 @@ package for_ds_final_colin_tim;
 
 import java.util.*;
 
+// Tim: first review of contactlist written by Colin. Looking good.
 //List of all the different contacts
 public class ContactList {
 
