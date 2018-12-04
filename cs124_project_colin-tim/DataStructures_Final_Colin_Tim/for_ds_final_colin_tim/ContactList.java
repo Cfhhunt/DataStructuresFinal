@@ -17,32 +17,39 @@ public class ContactList {
 	
 	private int size = 0;//Size of the entire contact list
 	
-	public Contact findByName(theName) { //Should have runtime of Theta(1)
-		String phonenum = contactListByName.get(theName);
-		return phonenum;
+	public Contact findByName(String theName) { //Should have runtime of Theta(1)
+		Contact contact = contactListByName.get(theName);
+		return contact;
 	}
 	
-	public Contact findByNumber(theNumber) {//Should have runtime of Theta(1)
-		String namefind = contactListByNumber.get(theNumber);
+	public Contact findByNumber(String theNumber) {//Should have runtime of Theta(1)
+		Contact namefind = contactListByNumber.get(theNumber);
 		return namefind;
 	}
 	
-	public boolean deleteByNumber(theNumber) {
+	public boolean deleteByNumber(String theNumber) {
 			
-		if (contactListByNumber(TheNumber) == null)
+		Contact contact = contactListByNumber.get(theNumber);
+		contactListByNumber.remove(theNumber);
+		contactListByName.remove(contact.getName());
+		
+		
+		
+		
+		if (contactListByNumber(theNumber.hashCode()) == null)
 			return false;
 
 		contactListByNumber.remove(theNumber);		
 
 		contactListNyName.remove(findByName(theName));
 
-		if (contactListByNumber(TheNumber == null)
+		if (contactListByNumber(theNumber == null)
 			return false;
 		
 		return true;
 	}
 
-	public boolean deleteByName(theName) {
+	public boolean deleteByName(String theName) {
                 
 		
 		if (contactListByName(theName) == null)
@@ -97,6 +104,5 @@ public class ContactList {
 		
 		System.out.println(" " + ourList.contactListByName.get("Gary").getNumber());
 		System.out.println(" " + ourList.contactListByName.get("Jon"));
-		
 	}
 }
