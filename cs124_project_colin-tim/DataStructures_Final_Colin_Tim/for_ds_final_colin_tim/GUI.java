@@ -1,11 +1,12 @@
 package for_ds_final_colin_tim;
 
+// Tim reviewed the code
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 //This GUI uses the Separate Chaining class to store user inputs in the contact list.
-//The GUI doe
 public class GUI extends JFrame {
 
 	private JTextField searchTF, nameTF, numberTF, emailTF, addressTF;
