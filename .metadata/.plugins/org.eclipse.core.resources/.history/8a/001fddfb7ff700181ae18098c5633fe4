@@ -1,0 +1,83 @@
+package for_ds_final_colin_tim;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class GUI extends JFrame {
+
+	private JTextField searchTF, nameTF;
+	private JLabel nameL, numberL, searchL, outputL, emailL, addressL;
+	private JTextArea outputTA;
+	private Container myCP;
+	private Color myColor = new Color(150, 225, 225);
+	
+	public GUI() {
+		super("Contact List");
+		setSize(600, 1100);
+		setLocation(100, 100);
+		myCP = getContentPane();
+		myCP.setLayout(null);
+		myCP.setBackground(myColor);
+		myCP.setForeground(Color.BLACK);
+		
+		// Search Bar
+		searchL = new JLabel("Search");
+		searchL.setOpaque(true);
+		searchL.setBackground(myColor);
+		searchL.setForeground(Color.BLACK);
+		searchL.setSize(100, 30);
+		searchL.setLocation(10,10);
+		myCP.add(searchL);
+		
+		searchTF = new JTextField("");
+		searchTF.setEditable(true);
+		searchTF.setSize(300, 30);
+		searchTF.setLocation(10, 50);
+		myCP.add(searchTF);
+		
+		// Name
+		nameL = new JLabel("Name");
+		nameL.setOpaque(true);
+		nameL.setBackground(myColor);
+		nameL.setForeground(Color.BLACK);
+		nameL.setSize(100, 30);
+		nameL.setLocation(10,100);
+		myCP.add(nameL);
+		
+		nameTF = new JTextField("");
+		nameTF.setEditable(true);
+		nameTF.setSize(300, 30);
+		nameTF.setLocation(10, 150);
+		myCP.add(nameTF);
+		
+		// Number(s) 
+		
+		// email
+		
+		// address
+		
+		// output results
+		
+		
+		outputTA = new JTextArea("");
+		outputTA.setEditable(false);
+		outputTA.setBackground(Color.white);
+		outputTA.setSize(300, 400);
+		outputTA.setLocation(10, 500);
+		myCP.add(outputTA);
+		
+		setVisible(true);
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+	}
+	
+	public static void main(String[] args) {
+		GUI myAppF = new GUI();
+
+	}
+
+}

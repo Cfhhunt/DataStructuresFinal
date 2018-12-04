@@ -8,6 +8,15 @@ public class Contact {
 	public Contact(String theName, String theNumber) {
 		name = theName;
 		number = theNumber;
+		address = "";
+		email = "";
+	}//2 parameter constructor
+	
+	public Contact(String theName, String theNumber, String theAddress, String theEmail) {
+		name = theName;
+		number = theNumber;
+		address = theAddress;
+		email = theEmail;
 	}//2 parameter constructor
 	
 	public String getName() {
@@ -17,5 +26,12 @@ public class Contact {
 	public String getNumber() {
 		return number;
 	}
-
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
 }

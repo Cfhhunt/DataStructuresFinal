@@ -1,0 +1,134 @@
+package for_ds_final_colin_tim;
+
+import java.util.*;
+
+public class SeparateChainingHashTable2<AnyType> {
+
+	private static final int DEFAULT_TABLE_SIZE = 101;
+	private List<Contact> [] theLists;//The Hash list
+	private int currentSize;//number of Contacts in the table
+
+	SeparateChainingHashTable2() {
+		theLists = new LinkedList[DEFAULT_TABLE_SIZE];
+		for(int i = 0; i < DEFAULT_TABLE_SIZE; i++) {
+			theLists[i] = new LinkedList<Contact>();
+		}
+	}//SeparateChainingHashTable
+
+	public boolean insert(Contact contact) {
+		List<Contact> nameList = theLists[myHash(contact.getName())];
+		List<Contact> numList = theLists[myHash(contact.getNumber())];
+		if (!nameList.contains(contact) && !numList.contains(contact)) {
+			nameList.add(contact);
+			numList.add(contact);
+			currentSize+=2;
+			if(currentSize > theLists.length) {
+				rehash();
+			}
+		} else {return false;}
+		return true;
+	}//insert contact
+
+	public boolean insert(String theName, String theNumber) {//TODO:
+		Contact toInsert = new Contact(theName, theNumber);
+		List<Contact> nameList = theLists[myHash(theName)];
+		List<Contact> numList = theLists[myHash(theNumber)];
+		if (!nameList.contains(toInsert) && !numList.contains(toInsert)) {
+			nameList.add(toInsert);
+			numList.add(toInsert);
+			currentSize+=2;
+			if(currentSize > theLists.length) {
+				rehash();
+			}
+		} else {return false;}
+		return true;
+	}//insert name and number
+
+	public boolean delete(String nameOrNumber) {//TODO:
+		Contact toDelete = find(nameOrNumber);
+		if(toDelete == null) {
+			return false;
+		}
+
+		List<Contact> nameList = theLists[myHash(toDelete.getName())];
+		List<Contact> numberList = theLists[myHash(toDelete.getNumber())];
+		if(nameList.contains(toDelete) && numberList.contains(toDelete)) {
+			nameList.remove(toDelete);
+			numberList.remove(toDelete);
+		} else {return false;}
+		return true;
+	}//delete
+
+	public Contact find(String nameOrNumber) {
+		List<Contact> nameList = theLists[myHash(nameOrNumber)];
+		List<Contact> numberList = theLists[myHash(nameOrNumber)];
+		for( Contact contact : nameList) {
+			if (contact.getName() == nameOrNumber);
+			return contact;
+		}
+		for( Contact contact : numberList) {
+			if (contact.getNumber() == nameOrNumber);
+			return contact;
+		}
+		return null;
+	}//find
+
+	public int size() {//returns the current size
+		return currentSize;
+	}//size
+
+	private void rehash() {//TODO: 
+		List<Contact> [] oldLists = theLists;
+
+		theLists = new List[nextPrime(2*theLists.length)];
+		for(int j = 0; j < theLists.length; j++) {
+			theLists[j] = new LinkedList<>();
+		}
+
+		currentSize = 0;
+		for(int i = 0; i < oldLists.length; i ++) {
+			for( Contact contact : oldLists[i]) {
+				insert(contact);
+			}
+		}
+	}//rehash
+
+	private int myHash(String x) {
+		int hashVal = x.hashCode();
+
+		hashVal = Math.abs(hashVal);
+
+		hashVal %= theLists.length;
+
+		return hashVal;
+	}//myHash
+
+	private static int nextPrime(int n) {//Finds the next prime number
+		n++;
+		while(!isPrime(n)) {
+			n+=2;
+		}
+		return n;
+	}//nextPrime
+
+	private static boolean isPrime(int n) {//Returns true or false if n is prime
+		if (n == 2) 
+			return true;
+		if (n < 2 || n % 2 == 0) 
+			return false;
+		for (int i = 3; i * i <= n; i += 2)
+			if (n % i == 0) 
+				return false;
+		return true;
+	}//isPrime
+	
+	public void printAllContacts() {//TODO:
+		
+	}//printAllContacts
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}//main
+}
+
