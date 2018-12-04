@@ -28,17 +28,31 @@ public class ContactList {
 	}
 	
 	public boolean deleteByNumber(theNumber) {
-		contactListByNumber.remove(theNumber);
-		
+			
+		if (contactListByNumber(TheNumber) == null)
+			return false;
+
+		contactListByNumber.remove(theNumber);		
+
 		contactListNyName.remove(findByName(theName));
 
+		if (contactListByNumber(TheNumber == null)
+			return false;
+		
 		return true;
 	}
 
 	public boolean deleteByName(theName) {
-                contactListByName.remove(theName);
+                
+		
+		if (contactListByName(theName) == null)
+			return false;
+		contactListByName.remove(theName);
                
 		contactListByNumber.remove(findByNumber(theNumber));
+
+		if (contactListByName(TheName == null))
+                	return false; 
 
                 return true;
 
